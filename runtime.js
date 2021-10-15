@@ -1,11 +1,11 @@
 const perf = require('execution-time')();
 
 
-function doublerAppend(nums){
+function doublerAppend(nums) {
 
     let new_nums = [];
 
-    for (let i=0; i<nums.length; i++){
+    for (let i = 0; i < nums.length; i++) {
         let num = nums[i] * 2;
         new_nums.push(num);
     }
@@ -13,11 +13,11 @@ function doublerAppend(nums){
 }
 
 
-function doublerInsert(nums){
+function doublerInsert(nums) {
 
     let new_nums = [];
 
-    for (let i=0; i<nums.length; i++){
+    for (let i = 0; i < nums.length; i++) {
         let num = nums[i] * 2;
         new_nums.unshift(num);
     }
@@ -25,9 +25,9 @@ function doublerInsert(nums){
 }
 
 
-function getSizedArray(size){
+function getSizedArray(size) {
     let array = [];
-    for (let i=0; i<size; i++){
+    for (let i = 0; i < size; i++) {
         array.push(i);
     }
     return array
@@ -46,9 +46,9 @@ const extraLargeArray = getSizedArray(100000);
 // array? 
 
 // Try it with first function
-perf.start();                     // Starts timer
+perf.start(); // Starts timer
 doublerAppend(extraLargeArray);
-let resultsAppend = perf.stop();  // Stops timer and save time results
+let resultsAppend = perf.stop(); // Stops timer and save time results
 
 
 // Try it with second function
@@ -57,6 +57,60 @@ doublerInsert(extraLargeArray);
 let resultsInsert = perf.stop();
 
 
+
+//XL Array
 console.log('Results for the extraLargeArray');
 console.log("insert", resultsInsert.preciseWords);
 console.log("append", resultsAppend.preciseWords);
+
+//L Array
+perf.start();
+doublerAppend(largeArray);
+let resultsAppend2 = perf.stop();
+
+perf.start();
+doublerInsert(largeArray);
+let resultsInsert2 = perf.stop();
+
+console.log('Results for the LargeArray');
+console.log("insert", resultsInsert2.preciseWords);
+console.log("append", resultsAppend2.preciseWords);
+
+//M Array
+perf.start();
+doublerAppend(mediumArray);
+let resultsAppend3 = perf.stop();
+
+perf.start();
+doublerInsert(mediumArray);
+let resultsInsert3 = perf.stop();
+
+console.log('Results for the mediumArray');
+console.log("insert", resultsInsert3.preciseWords);
+console.log("append", resultsAppend3.preciseWords);
+
+//S Array
+perf.start();
+doublerAppend(smallArray);
+let resultsAppend4 = perf.stop();
+
+perf.start();
+doublerInsert(smallArray);
+let resultsInsert4 = perf.stop();
+
+console.log('Results for the smallArray');
+console.log("insert", resultsInsert4.preciseWords);
+console.log("append", resultsAppend4.preciseWords);
+
+//T Array
+perf.start();
+doublerAppend(tinyArray);
+let resultsAppend5 = perf.stop();
+
+perf.start();
+doublerInsert(tinyArray);
+let resultsInsert5 = perf.stop();
+
+console.log('Results for the tinyArray');
+console.log("insert", resultsInsert5.preciseWords);
+console.log("append", resultsAppend5.preciseWords);
